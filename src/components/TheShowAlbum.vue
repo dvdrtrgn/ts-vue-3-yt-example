@@ -6,20 +6,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import { Result } from "../types/ItunesTypes.interface";
+  import { defineComponent, PropType } from 'vue';
+  import { ItunesResult } from '../types/ItunesTypes.interface';
 
-export default defineComponent({
-  props: {
-    album: {
-      type: Object as PropType<Result>,
-      required: true
-    }
-  },
-  setup() {
-    return {};
-  }
-});
+  export default defineComponent({
+    props: {
+      album: {
+        type: Object as PropType<ItunesResult>,
+        required: true,
+      },
+    },
+    setup() {
+      return {};
+    },
+  });
 </script>
 
 <style scoped></style>

@@ -2,10 +2,10 @@
 
 export interface ItunesTypes {
   resultCount?: number;
-  results?: Result[];
+  results?: ItunesResult[];
 }
 
-export interface Result {
+export interface ItunesResult {
   wrapperType: string;
   collectionType: string;
   artistId: number;
