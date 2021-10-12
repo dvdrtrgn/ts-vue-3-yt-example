@@ -1,8 +1,21 @@
 <template>
-  <h2>Album Name: {{ album.collectionName }}</h2>
-  <h4>Artwork</h4>
-  <img :src="album.artworkUrl100" alt="" />
-  <h4>Price: {{ album.collectionPrice }}</h4>
+  <ul class="TheShowAlbum">
+    <li><img :src="album.artworkUrl100" :alt="album.collectionName" /></li>
+    <li class="small">
+      Tracks: {{ album.trackCount }} <br />
+      Price: ${{ album.collectionPrice }} <br />
+      <br />
+      {{ album.primaryGenreName }} <br />
+      {{ calcDate }} <br />
+    </li>
+    <li class="title">
+      “<a :href="album.collectionViewUrl"> {{ album.collectionName }} </a>” by
+      <a :href="album.artistViewUrl">
+        {{ album.artistName }}
+      </a>
+      <p class="small">{{ album.copyright }}</p>
+    </li>
+  </ul>
 </template>
 
 <script lang="ts">
@@ -19,7 +32,38 @@
     setup() {
       return {};
     },
+    computed: {
+      calcDate() {
+        const date = new Date(this.album.releaseDate);
+        return date.toUTCString().slice(5,16)
+      },
+    },
   });
 </script>
 
-<style scoped></style>
+<style lang="scss">
+  .TheShowAlbum {
+    align-items: center;
+    border-bottom: 1px solid silver;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    text-align: left;
+
+    a {
+      text-decoration: none;
+    }
+    li:nth-child(1),
+    li:nth-child(2) {
+      width: 5rem;
+    }
+
+    li.title {
+      flex-basis: 10%;
+      flex-grow: 0.9;
+    }
+    .small {
+      font-size: xx-small;
+    }
+  }
+</style>
